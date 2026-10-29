@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "elixir (root)",
+			"path": "."
+		},
+		{
 			"path": "baffling-birthdays"
 		},
 		{
