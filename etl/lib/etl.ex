@@ -1,0 +1,22 @@
+defmodule ETL do
+  @moduledoc """
+  Transforms Scrabble score data between an old and a new format.
+  """
+
+  @doc """
+  Transforms an old Scrabble score system to a new one.
+
+  ## Examples
+
+    iex> ETL.transform(%{1 => ["A", "E"], 2 => ["D", "G"]})
+    %{"a" => 1, "d" => 2, "e" => 1, "g" => 2}
+  """
+  @spec transform(%{integer => [String.t()]}) :: %{String.t() => integer}
+  def transform(map) do
+    for {points, letters} <- map,
+        letter <- letters,
+        into: %{} do
+      {String.downcase(letter), points}
+    end
+  end
+end

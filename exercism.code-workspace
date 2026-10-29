@@ -1,0 +1,103 @@
+{
+	"folders": [
+		{
+			"path": "baffling-birthdays"
+		},
+		{
+			"path": "camicia"
+		},
+		{
+			"path": "custom-set"
+		},
+		{
+			"path": "diamond"
+		},
+		{
+			"path": "food-chain"
+		},
+		{
+			"path": "game-of-life"
+		},
+		{
+			"path": "intergalactic-transmission"
+		},
+		{
+			"path": "knapsack"
+		},
+		{
+			"path": "ledger"
+		},
+		{
+			"path": "list-ops"
+		},
+		{
+			"path": "luhn"
+		},
+		{
+			"path": "markdown"
+		},
+		{
+			"path": "ocr-numbers"
+		},
+		{
+			"path": "palindrome-products"
+		},
+		{
+			"path": "prism"
+		},
+		{
+			"path": "pythagorean-triplet"
+		},
+		{
+			"path": "rail-fence-cipher"
+		},
+		{
+			"path": "saddle-points"
+		},
+		{
+			"path": "sieve"
+		},
+		{
+			"path": "split-second-stopwatch"
+		},
+		{
+			"path": "square-root"
+		},
+		{
+			"path": "transpose"
+		},
+		{
+			"path": "yacht"
+		},
+		{
+			"path": "zebra-puzzle"
+		}
+	],
+	"settings": {
+		"[elixir]": {
+			"editor.defaultFormatter": "jakebecker.elixir-ls",
+			"editor.formatOnSave": true
+		},
+		"elixirLS.autoBuild": false
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"type": "mix_task",
+				"name": "mix test (carpeta activa)",
+				"request": "launch",
+				"task": "test",
+				"taskArgs": [
+					"--trace"
+				],
+				"startApps": true,
+				"projectDir": "${workspaceFolder}",
+				"requireFiles": [
+					"test/**/test_helper.exs",
+					"test/**/*_test.exs"
+				]
+			}
+		]
+	}
+}
