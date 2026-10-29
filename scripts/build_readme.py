@@ -56,7 +56,7 @@ def load_descriptions():
 
 
 def scan_local_exercises():
-    """Returns (ordered list of completed exercise slugs, {slug: mtime})."""
+    """Returns (ordered list of local exercise slugs, {slug: mtime})."""
     entries = []
     for name in sorted(os.listdir(EXERCISM_ROOT)):
         if name in NON_EXERCISE_DIRS or name.startswith("."):
@@ -151,7 +151,7 @@ def render_exercises_table(order, exercise_num, graph, practice_map, description
                 if c in concept_meta
             )
         else:
-            concepts_cell = "— (introductory exercise, no concept assigned)"
+            concepts_cell = "— (no concept mapping in track config)"
 
         lines.append(f"| {n} | {ex_cell} | {desc} | {concepts_cell} |")
 
@@ -180,7 +180,7 @@ def render_concepts_table(graph, exercise_num, descriptions):
             )
         elif ex_slug:
             status = concept_exercises.get(ex_slug, {}).get("status", "unknown")
-            taught_by = f"*not completed yet (`{ex_slug}`, {status} on Exercism)*"
+            taught_by = f"*not present locally (`{ex_slug}`, {status} in track config)*"
         else:
             taught_by = "*(no concept exercise found in config.json)*"
 

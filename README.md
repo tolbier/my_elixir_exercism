@@ -1,13 +1,58 @@
-# Exercism - Elixir
+# Exercism — Elixir
 
-Exercises from the Elixir track on [Exercism](https://exercism.org/tracks/elixir), organized as independent modules inside this same IntelliJ project.
+Personal solutions and work in progress for the Elixir track on Exercism. The repository contains **141 downloaded exercises**, each in its own Mix project, plus a separate [`ledger-original`](ledger-original) project alongside the [`ledger`](ledger) refactoring exercise.
+
+The exercise index lists what is present locally; inclusion does not indicate that an exercise is complete or that all its tests pass.
+
+## Repository layout
+
+- Each exercise directory contains `mix.exs`, implementation files in `lib/`, tests in `test/`, and Exercism instructions and metadata.
+- [`exercism.code-workspace`](exercism.code-workspace) opens the repository root and 24 selected exercise folders in VS Code. It configures ElixirLS formatting and a Mix test launch configuration. Other exercises remain accessible through the root folder.
+- [`scripts/`](scripts) contains the README table generator, exercise and concept descriptions, and a cached Elixir track configuration.
+- [`AGENTS.md`](AGENTS.md) documents the workflow for adding exercises, checking solutions, and providing incremental help.
+
+There is no root Mix project: run Mix commands from the exercise you want to work on.
+
+## Working on an exercise
+
+Install Elixir/Erlang and use an exercise's `mix.exs` for its version requirements. The Exercism CLI is needed to download or submit exercises.
+
+```bash
+cd rail-fence-cipher
+mix deps.get
+mix test --include pending
+mix test --trace
+```
+
+`--include pending` includes tests tagged as pending, so the final check covers the full suite.
+
+Many exercises include Credo for style checks and Dialyxir for Dialyzer analysis. From an exercise configured with these dependencies, run:
+
+```bash
+mix credo
+mix dialyzer
+```
+
+For a final check, first add any missing `@spec` annotations, then run `mix test --include pending`, `mix credo`, and `mix dialyzer`. Older exercises may still need the tooling configured; see [`AGENTS.md`](AGENTS.md). New exercises use `~/.cache/dialyxir_plts` for both `plt_core_path` and `plt_local_path` to share PLT files across projects.
+
+## Adding an exercise
+
+```bash
+exercism download --exercise=<slug> --track=elixir
+```
+
+The local CLI workspace is configured as `/home/toyos/exercism`, so downloads go to `/home/toyos/exercism/elixir/<slug>`. Add the exercise to the VS Code workspace in alphabetical order, configure Credo and Dialyxir with the shared PLT paths, and run `mix deps.get` and `mix credo` as described in [`AGENTS.md`](AGENTS.md).
+
+Add a description to `scripts/descriptions.json` and regenerate the index using the commands below.
 
 ## Exercises
+
+The index follows local `.exercism/metadata.json` modification times, with alphabetical ordering for ties. This approximates download order and can change when files are copied or restored. Directory links open local exercises; `(+)` links open their Exercism pages. Descriptions summarize the exercise topics.
 
 <!-- BEGIN GENERATED: exercises-table (see scripts/build_readme.py) -->
 | # | Exercise | Concepts it covers | Concepts (exercism.org) |
 |---|---|---|---|
-| 1 | [`hello-world`](hello-world) [(+)](https://exercism.org/tracks/elixir/exercises/hello-world) | Basic syntax: modules, functions, strings. | — (introductory exercise, no concept assigned) |
+| 1 | [`hello-world`](hello-world) [(+)](https://exercism.org/tracks/elixir/exercises/hello-world) | Basic syntax: modules, functions, strings. | — (no concept mapping in track config) |
 | 2 | [`lasagna`](lasagna) [(+)](https://exercism.org/tracks/elixir/exercises/lasagna) | Language fundamentals: modules, functions with and without arguments, arity, default values. | [1. Basics](https://exercism.org/tracks/elixir/concepts/basics) |
 | 3 | [`pacman-rules`](pacman-rules) [(+)](https://exercism.org/tracks/elixir/exercises/pacman-rules) | Booleans and logical operators (`and`, `or`, `not`). | [4. Booleans](https://exercism.org/tracks/elixir/concepts/booleans) |
 | 4 | [`freelancer-rates`](freelancer-rates) [(+)](https://exercism.org/tracks/elixir/exercises/freelancer-rates) | Integers and floating-point numbers, rounding (`ceil`, `Float.floor`), the pipe operator `\|>`. | [6. Integers](https://exercism.org/tracks/elixir/concepts/integers), [5. Floating Point Numbers](https://exercism.org/tracks/elixir/concepts/floating-point-numbers) |
@@ -90,7 +135,7 @@ Exercises from the Elixir track on [Exercism](https://exercism.org/tracks/elixir
 | 81 | [`gigasecond`](gigasecond) [(+)](https://exercism.org/tracks/elixir/exercises/gigasecond) | The Erlang `:calendar` module to add a billion seconds to a date. | [31. Dates and Time](https://exercism.org/tracks/elixir/concepts/dates-and-time) |
 | 82 | [`grade-school`](grade-school) [(+)](https://exercism.org/tracks/elixir/exercises/grade-school) | A struct wrapping two maps to track students by grade and vice versa. | [15. Maps](https://exercism.org/tracks/elixir/concepts/maps) |
 | 83 | [`grains`](grains) [(+)](https://exercism.org/tracks/elixir/exercises/grains) | Recursion to calculate the number of grains on a doubling chessboard square. | [7. Atoms](https://exercism.org/tracks/elixir/concepts/atoms), [14. Tuples](https://exercism.org/tracks/elixir/concepts/tuples), [40. Ranges](https://exercism.org/tracks/elixir/concepts/ranges) |
-| 84 | [`house`](house) [(+)](https://exercism.org/tracks/elixir/exercises/house) | A tuple of verses and recursion to build the cumulative "House That Jack Built" rhyme. | — (introductory exercise, no concept assigned) |
+| 84 | [`house`](house) [(+)](https://exercism.org/tracks/elixir/exercises/house) | A tuple of verses and recursion to build the cumulative "House That Jack Built" rhyme. | — (no concept mapping in track config) |
 | 85 | [`isbn-verifier`](isbn-verifier) [(+)](https://exercism.org/tracks/elixir/exercises/isbn-verifier) | Charlists and `Enum.reduce` to validate an ISBN-10 identifier's checksum. | [34. Regular Expressions](https://exercism.org/tracks/elixir/concepts/regular-expressions), [40. Ranges](https://exercism.org/tracks/elixir/concepts/ranges) |
 | 86 | [`isogram`](isogram) [(+)](https://exercism.org/tracks/elixir/exercises/isogram) | `Enum.frequencies/1` to check whether a word or sentence is an isogram. | [34. Regular Expressions](https://exercism.org/tracks/elixir/concepts/regular-expressions) |
 | 87 | [`kindergarten-garden`](kindergarten-garden) [(+)](https://exercism.org/tracks/elixir/exercises/kindergarten-garden) | String parsing and maps to determine each student's plants from a windowsill arrangement. | [15. Maps](https://exercism.org/tracks/elixir/concepts/maps), [16. Module Attributes As Constants](https://exercism.org/tracks/elixir/concepts/module-attributes-as-constants) |
@@ -100,7 +145,7 @@ Exercises from the Elixir track on [Exercism](https://exercism.org/tracks/elixir
 | 91 | [`pascals-triangle`](pascals-triangle) [(+)](https://exercism.org/tracks/elixir/exercises/pascals-triangle) | Recursion to calculate the rows of Pascal's triangle up to a given height. | [18. Recursion](https://exercism.org/tracks/elixir/concepts/recursion) |
 | 92 | [`perfect-numbers`](perfect-numbers) [(+)](https://exercism.org/tracks/elixir/exercises/perfect-numbers) | Integer arithmetic to classify a number as perfect, abundant or deficient by its aliquot sum. | [7. Atoms](https://exercism.org/tracks/elixir/concepts/atoms), [8. Cond](https://exercism.org/tracks/elixir/concepts/cond), [13. Pattern Matching](https://exercism.org/tracks/elixir/concepts/pattern-matching) |
 | 93 | [`prime-factors`](prime-factors) [(+)](https://exercism.org/tracks/elixir/exercises/prime-factors) | Recursion (trial division) to compute the prime factorization of a number. | [12. Multiple Clause Functions](https://exercism.org/tracks/elixir/concepts/multiple-clause-functions), [42. Tail Call Recursion](https://exercism.org/tracks/elixir/concepts/tail-call-recursion) |
-| 94 | [`proverb`](proverb) [(+)](https://exercism.org/tracks/elixir/exercises/proverb) | Recursion to generate the "For Want of a Nail" proverb from a list of items. | — (introductory exercise, no concept assigned) |
+| 94 | [`proverb`](proverb) [(+)](https://exercism.org/tracks/elixir/exercises/proverb) | Recursion to generate the "For Want of a Nail" proverb from a list of items. | — (no concept mapping in track config) |
 | 95 | [`resistor-color-trio`](resistor-color-trio) [(+)](https://exercism.org/tracks/elixir/exercises/resistor-color-trio) | A tuple-valued map to calculate a resistor's resistance value from its three color bands. | [7. Atoms](https://exercism.org/tracks/elixir/concepts/atoms), [6. Integers](https://exercism.org/tracks/elixir/concepts/integers), [15. Maps](https://exercism.org/tracks/elixir/concepts/maps) |
 | 96 | [`say`](say) [(+)](https://exercism.org/tracks/elixir/exercises/say) | Multi-clause recursive functions to translate numbers into their English words. | [11. Guards](https://exercism.org/tracks/elixir/concepts/guards), [16. Module Attributes As Constants](https://exercism.org/tracks/elixir/concepts/module-attributes-as-constants) |
 | 97 | [`simple-cipher`](simple-cipher) [(+)](https://exercism.org/tracks/elixir/exercises/simple-cipher) | String/charlist manipulation to encode and decode text with a repeating-key Vigenère cipher. | [21. Charlists](https://exercism.org/tracks/elixir/concepts/charlists), [49. Randomness](https://exercism.org/tracks/elixir/concepts/randomness) |
@@ -112,14 +157,47 @@ Exercises from the Elixir track on [Exercism](https://exercism.org/tracks/elixir
 | 103 | [`difference-of-squares`](difference-of-squares) [(+)](https://exercism.org/tracks/elixir/exercises/difference-of-squares) | Closed-form integer arithmetic to compare sum-of-squares and square-of-sum. | [40. Ranges](https://exercism.org/tracks/elixir/concepts/ranges) |
 | 104 | [`dominoes`](dominoes) [(+)](https://exercism.org/tracks/elixir/exercises/dominoes) | Recursive backtracking over a list of tuples to check whether dominoes form a closed chain. | [42. Tail Call Recursion](https://exercism.org/tracks/elixir/concepts/tail-call-recursion) |
 | 105 | [`grep`](grep) [(+)](https://exercism.org/tracks/elixir/exercises/grep) | Pattern matching and a parsed-flags map (no regex) to reimplement Unix `grep`. | [20. Case](https://exercism.org/tracks/elixir/concepts/case), [34. Regular Expressions](https://exercism.org/tracks/elixir/concepts/regular-expressions), [37. File](https://exercism.org/tracks/elixir/concepts/file) |
-| 106 | [`killer-sudoku-helper`](killer-sudoku-helper) [(+)](https://exercism.org/tracks/elixir/exercises/killer-sudoku-helper) | Recursion to generate digit combinations, filtered by sum, for a Killer Sudoku cage. | — (introductory exercise, no concept assigned) |
+| 106 | [`killer-sudoku-helper`](killer-sudoku-helper) [(+)](https://exercism.org/tracks/elixir/exercises/killer-sudoku-helper) | Recursion to generate digit combinations, filtered by sum, for a Killer Sudoku cage. | — (no concept mapping in track config) |
 | 107 | [`largest-series-product`](largest-series-product) [(+)](https://exercism.org/tracks/elixir/exercises/largest-series-product) | `Enum.chunk_every/4` with overlap to find the largest product of a series of consecutive digits. | [6. Integers](https://exercism.org/tracks/elixir/concepts/integers) |
 | 108 | [`meetup`](meetup) [(+)](https://exercism.org/tracks/elixir/exercises/meetup) | The `Date` module (`Date.range`, `Date.day_of_week`) to calculate meetup dates by weekday and schedule. | [7. Atoms](https://exercism.org/tracks/elixir/concepts/atoms), [13. Pattern Matching](https://exercism.org/tracks/elixir/concepts/pattern-matching), [31. Dates and Time](https://exercism.org/tracks/elixir/concepts/dates-and-time) |
+| 109 | [`parallel-letter-frequency`](parallel-letter-frequency) [(+)](https://exercism.org/tracks/elixir/exercises/parallel-letter-frequency) | Concurrent text processing and combining letter-frequency maps. | [27. Processes](https://exercism.org/tracks/elixir/concepts/processes), [56. Tasks](https://exercism.org/tracks/elixir/concepts/tasks) |
+| 110 | [`phone-number`](phone-number) [(+)](https://exercism.org/tracks/elixir/exercises/phone-number) | Cleaning and validating North American telephone numbers. | [19. Strings](https://exercism.org/tracks/elixir/concepts/strings), [34. Regular Expressions](https://exercism.org/tracks/elixir/concepts/regular-expressions) |
+| 111 | [`rational-numbers`](rational-numbers) [(+)](https://exercism.org/tracks/elixir/exercises/rational-numbers) | Fraction arithmetic, normalization, and exponentiation. | [1. Basics](https://exercism.org/tracks/elixir/concepts/basics) |
+| 112 | [`simple-linked-list`](simple-linked-list) [(+)](https://exercism.org/tracks/elixir/exercises/simple-linked-list) | Building, traversing, and reversing a singly linked list. | [7. Atoms](https://exercism.org/tracks/elixir/concepts/atoms), [14. Tuples](https://exercism.org/tracks/elixir/concepts/tuples), [42. Tail Call Recursion](https://exercism.org/tracks/elixir/concepts/tail-call-recursion) |
+| 113 | [`spiral-matrix`](spiral-matrix) [(+)](https://exercism.org/tracks/elixir/exercises/spiral-matrix) | Filling a square matrix in clockwise spiral order. | [9. Lists](https://exercism.org/tracks/elixir/concepts/lists), [18. Recursion](https://exercism.org/tracks/elixir/concepts/recursion) |
+| 114 | [`tournament`](tournament) [(+)](https://exercism.org/tracks/elixir/exercises/tournament) | Parsing match results, accumulating standings, and formatting a sorted table. | [15. Maps](https://exercism.org/tracks/elixir/concepts/maps), [13. Pattern Matching](https://exercism.org/tracks/elixir/concepts/pattern-matching) |
+| 115 | [`affine-cipher`](affine-cipher) [(+)](https://exercism.org/tracks/elixir/exercises/affine-cipher) | Modular arithmetic, coprime keys, and reversible character substitution. | [17. Pipe Operator](https://exercism.org/tracks/elixir/concepts/pipe-operator), [19. Strings](https://exercism.org/tracks/elixir/concepts/strings) |
+| 116 | [`bank-account`](bank-account) [(+)](https://exercism.org/tracks/elixir/exercises/bank-account) | Concurrent account operations and process-managed state. | [23. If](https://exercism.org/tracks/elixir/concepts/if), [27. Processes](https://exercism.org/tracks/elixir/concepts/processes), [26. PIDs](https://exercism.org/tracks/elixir/concepts/pids), [43. Agent](https://exercism.org/tracks/elixir/concepts/agent) |
+| 117 | [`clock`](clock) [(+)](https://exercism.org/tracks/elixir/exercises/clock) | Time normalization and arithmetic on a 24-hour clock. | [41. Structs](https://exercism.org/tracks/elixir/concepts/structs), [48. Protocols](https://exercism.org/tracks/elixir/concepts/protocols) |
+| 118 | [`custom-set`](custom-set) [(+)](https://exercism.org/tracks/elixir/exercises/custom-set) | A custom collection of unique elements and set operations without MapSet. | [15. Maps](https://exercism.org/tracks/elixir/concepts/maps) |
+| 119 | [`diamond`](diamond) [(+)](https://exercism.org/tracks/elixir/exercises/diamond) | Symmetric text generation, letter sequences, and whitespace alignment. | [21. Charlists](https://exercism.org/tracks/elixir/concepts/charlists) |
+| 120 | [`food-chain`](food-chain) [(+)](https://exercism.org/tracks/elixir/exercises/food-chain) | Cumulative verse generation and reusable text patterns. | [19. Strings](https://exercism.org/tracks/elixir/concepts/strings) |
+| 121 | [`intergalactic-transmission`](intergalactic-transmission) [(+)](https://exercism.org/tracks/elixir/exercises/intergalactic-transmission) | Bit packing, parity bits, and transmission error detection. | [3. Bit Manipulation](https://exercism.org/tracks/elixir/concepts/bit-manipulation), [30. Bitstrings](https://exercism.org/tracks/elixir/concepts/bitstrings) |
+| 122 | [`luhn`](luhn) [(+)](https://exercism.org/tracks/elixir/exercises/luhn) | Input validation and digit transformations for a checksum. | [6. Integers](https://exercism.org/tracks/elixir/concepts/integers) |
+| 123 | [`palindrome-products`](palindrome-products) [(+)](https://exercism.org/tracks/elixir/exercises/palindrome-products) | Finding minimum and maximum palindromic products and their factors. | [40. Ranges](https://exercism.org/tracks/elixir/concepts/ranges), [38. List Comprehensions](https://exercism.org/tracks/elixir/concepts/list-comprehensions) |
+| 124 | [`pythagorean-triplet`](pythagorean-triplet) [(+)](https://exercism.org/tracks/elixir/exercises/pythagorean-triplet) | Finding integer right-triangle sides with a specified sum. | [32. Enum](https://exercism.org/tracks/elixir/concepts/enum) |
+| 125 | [`saddle-points`](saddle-points) [(+)](https://exercism.org/tracks/elixir/exercises/saddle-points) | Finding matrix entries that are row maxima and column minima. | [15. Maps](https://exercism.org/tracks/elixir/concepts/maps) |
+| 126 | [`sieve`](sieve) [(+)](https://exercism.org/tracks/elixir/exercises/sieve) | Generating primes with the Sieve of Eratosthenes. | [9. Lists](https://exercism.org/tracks/elixir/concepts/lists), [18. Recursion](https://exercism.org/tracks/elixir/concepts/recursion) |
+| 127 | [`split-second-stopwatch`](split-second-stopwatch) [(+)](https://exercism.org/tracks/elixir/exercises/split-second-stopwatch) | Stopwatch state transitions, elapsed time, and lap tracking. | [41. Structs](https://exercism.org/tracks/elixir/concepts/structs), [31. Dates and Time](https://exercism.org/tracks/elixir/concepts/dates-and-time) |
+| 128 | [`square-root`](square-root) [(+)](https://exercism.org/tracks/elixir/exercises/square-root) | Calculating integer square roots without predefined square-root functions. | [6. Integers](https://exercism.org/tracks/elixir/concepts/integers) |
+| 129 | [`transpose`](transpose) [(+)](https://exercism.org/tracks/elixir/exercises/transpose) | Transposing text rows and columns while preserving required spaces. | [32. Enum](https://exercism.org/tracks/elixir/concepts/enum) |
+| 130 | [`yacht`](yacht) [(+)](https://exercism.org/tracks/elixir/exercises/yacht) | Scoring dice combinations according to game categories. | [12. Multiple Clause Functions](https://exercism.org/tracks/elixir/concepts/multiple-clause-functions) |
+| 131 | [`baffling-birthdays`](baffling-birthdays) [(+)](https://exercism.org/tracks/elixir/exercises/baffling-birthdays) | Dates, random sampling, and simulations of the birthday paradox. | [49. Randomness](https://exercism.org/tracks/elixir/concepts/randomness) |
+| 132 | [`camicia`](camicia) [(+)](https://exercism.org/tracks/elixir/exercises/camicia) | Card-game simulation, recursive state transitions, and loop detection. | — (no concept mapping in track config) |
+| 133 | [`game-of-life`](game-of-life) [(+)](https://exercism.org/tracks/elixir/exercises/game-of-life) | Grid traversal, neighbor counting, and cellular automaton rules. | [32. Enum](https://exercism.org/tracks/elixir/concepts/enum) |
+| 134 | [`knapsack`](knapsack) [(+)](https://exercism.org/tracks/elixir/exercises/knapsack) | Selecting items to maximize value within a weight limit. | — (no concept mapping in track config) |
+| 135 | [`ledger`](ledger) [(+)](https://exercism.org/tracks/elixir/exercises/ledger) | Refactoring a ledger printer while preserving locale and currency formatting. | [12. Multiple Clause Functions](https://exercism.org/tracks/elixir/concepts/multiple-clause-functions) |
+| 136 | [`list-ops`](list-ops) [(+)](https://exercism.org/tracks/elixir/exercises/list-ops) | Recursive list operations, higher-order functions, and left and right folds. | [9. Lists](https://exercism.org/tracks/elixir/concepts/lists), [42. Tail Call Recursion](https://exercism.org/tracks/elixir/concepts/tail-call-recursion) |
+| 137 | [`markdown`](markdown) [(+)](https://exercism.org/tracks/elixir/exercises/markdown) | Refactoring a Markdown-to-HTML parser while preserving its behavior. | [34. Regular Expressions](https://exercism.org/tracks/elixir/concepts/regular-expressions) |
+| 138 | [`ocr-numbers`](ocr-numbers) [(+)](https://exercism.org/tracks/elixir/exercises/ocr-numbers) | Recognizing digits in character grids and validating grid dimensions. | [19. Strings](https://exercism.org/tracks/elixir/concepts/strings), [12. Multiple Clause Functions](https://exercism.org/tracks/elixir/concepts/multiple-clause-functions) |
+| 139 | [`zebra-puzzle`](zebra-puzzle) [(+)](https://exercism.org/tracks/elixir/exercises/zebra-puzzle) | Constraint-based reasoning over possible arrangements of house attributes. | [32. Enum](https://exercism.org/tracks/elixir/concepts/enum), [8. Cond](https://exercism.org/tracks/elixir/concepts/cond) |
+| 140 | [`prism`](prism) [(+)](https://exercism.org/tracks/elixir/exercises/prism) | Tracing a laser through prisms using coordinates and angles. | [45. Erlang Libraries](https://exercism.org/tracks/elixir/concepts/erlang-libraries), [5. Floating Point Numbers](https://exercism.org/tracks/elixir/concepts/floating-point-numbers) |
+| 141 | [`rail-fence-cipher`](rail-fence-cipher) [(+)](https://exercism.org/tracks/elixir/exercises/rail-fence-cipher) | Encoding and decoding text using a zigzag transposition pattern. | [40. Ranges](https://exercism.org/tracks/elixir/concepts/ranges) |
 <!-- END GENERATED: exercises-table -->
 
 ## Concepts
 
-All concepts of the Elixir track, ordered by prerequisite (a concept only appears after every concept it depends on), following the dependency graph published on [exercism.org/tracks/elixir/concepts](https://exercism.org/tracks/elixir/concepts). For each concept: a short description, which exercise(s) above teach it, and which other concepts it unlocks (i.e. concepts whose exercise lists this one as a prerequisite).
+The 60 concepts in the cached track configuration, ordered so prerequisites appear first. Each row describes the concept, links to a local teaching exercise when available, and lists the concepts it unlocks. This is a reference to the cached track taxonomy, not a record of completed learning.
 
 <!-- BEGIN GENERATED: concepts-table (see scripts/build_readme.py) -->
 | # | Concept | Description | Taught by | Unlocks |
@@ -175,61 +253,26 @@ All concepts of the Elixir track, ordered by prerequisite (a concept only appear
 | 49 | [Randomness](https://exercism.org/tracks/elixir/concepts/randomness) | Generating random numbers with `:rand`. | [31. `captains-log`](captains-log) [(+)](https://exercism.org/tracks/elixir/exercises/captains-log) | — |
 | 50 | [Try/Rescue](https://exercism.org/tracks/elixir/concepts/try-rescue) | Catching exceptions with `try`/`rescue`. | [33. `rpn-calculator`](rpn-calculator) [(+)](https://exercism.org/tracks/elixir/exercises/rpn-calculator) | [52. Dynamic Dispatch](https://exercism.org/tracks/elixir/concepts/dynamic-dispatch), [57. Try/Rescue/Else/After](https://exercism.org/tracks/elixir/concepts/try-rescue-else-after) |
 | 51 | [Behaviours](https://exercism.org/tracks/elixir/concepts/behaviours) | Module contracts (`@callback`, `@behaviour`) for shared interfaces. | [39. `dancing-dots`](dancing-dots) [(+)](https://exercism.org/tracks/elixir/exercises/dancing-dots) | [60. GenServer](https://exercism.org/tracks/elixir/concepts/genserver) |
-| 52 | [Dynamic Dispatch](https://exercism.org/tracks/elixir/concepts/dynamic-dispatch) | Dispatching a function to different implementations based on the argument's type. | *not completed yet (`rpn-calculator-output`, wip on Exercism)* | — |
+| 52 | [Dynamic Dispatch](https://exercism.org/tracks/elixir/concepts/dynamic-dispatch) | Dispatching a function to different implementations based on the argument's type. | *not present locally (`rpn-calculator-output`, wip in track config)* | — |
 | 53 | [Exceptions](https://exercism.org/tracks/elixir/concepts/exceptions) | Defining custom exceptions with `defexception`. | [34. `stack-underflow`](stack-underflow) [(+)](https://exercism.org/tracks/elixir/exercises/stack-underflow) | — |
 | 54 | [Links](https://exercism.org/tracks/elixir/concepts/links) | Links between processes to propagate exit signals. | [35. `rpn-calculator-inspection`](rpn-calculator-inspection) [(+)](https://exercism.org/tracks/elixir/exercises/rpn-calculator-inspection) | — |
 | 55 | [Streams](https://exercism.org/tracks/elixir/concepts/streams) | Lazy enumerables (`Stream`), evaluated on demand. | [36. `lucas-numbers`](lucas-numbers) [(+)](https://exercism.org/tracks/elixir/exercises/lucas-numbers) | — |
 | 56 | [Tasks](https://exercism.org/tracks/elixir/concepts/tasks) | The `Task` module to run concurrent work and collect its result. | [35. `rpn-calculator-inspection`](rpn-calculator-inspection) [(+)](https://exercism.org/tracks/elixir/exercises/rpn-calculator-inspection) | — |
-| 57 | [Try/Rescue/Else/After](https://exercism.org/tracks/elixir/concepts/try-rescue-else-after) | The `else`/`after` clauses of `try`, for success cases and guaranteed cleanup. | *not completed yet (`rpn-calculator-output`, wip on Exercism)* | — |
+| 57 | [Try/Rescue/Else/After](https://exercism.org/tracks/elixir/concepts/try-rescue-else-after) | The `else`/`after` clauses of `try`, for success cases and guaranteed cleanup. | *not present locally (`rpn-calculator-output`, wip in track config)* | — |
 | 58 | [Use](https://exercism.org/tracks/elixir/concepts/use) | The `use`/`__using__` macro to inject code from another module into your own. | [39. `dancing-dots`](dancing-dots) [(+)](https://exercism.org/tracks/elixir/exercises/dancing-dots) | — |
 | 59 | [With](https://exercism.org/tracks/elixir/concepts/with) | The `with` construct to chain operations that may fail. | [37. `new-passport`](new-passport) [(+)](https://exercism.org/tracks/elixir/exercises/new-passport) | — |
 | 60 | [GenServer](https://exercism.org/tracks/elixir/concepts/genserver) | The `GenServer` behaviour for stateful client-server processes. | [40. `take-a-number-deluxe`](take-a-number-deluxe) [(+)](https://exercism.org/tracks/elixir/exercises/take-a-number-deluxe) | — |
 <!-- END GENERATED: concepts-table -->
 
-## Structure
+## Maintaining this README
 
-Each folder is an independent Mix project (`mix.exs`, `lib/`, `test/`), downloaded with `exercism download`. All of them are registered as modules of a single IntelliJ project (see `.idea/modules.xml`) so tests can be run with the green triangles from any `*_test.exs` file.
-
-## Useful commands
+The exercise and concept tables are generated by [`scripts/build_readme.py`](scripts/build_readme.py). Edit [`scripts/descriptions.json`](scripts/descriptions.json) for their descriptions rather than editing generated rows.
 
 ```bash
-cd <exercise> && mix test        # run an exercise's tests
-cd <exercise> && mix test --trace
+python3 scripts/build_readme.py --offline  # use the checked-in track config
+python3 scripts/build_readme.py            # fetch the current track config
 ```
 
-## Note for a future AI reading/regenerating this file
+The generator scans directories containing `.exercism/metadata.json`; `ledger-original` has no such metadata and is excluded from the exercise index. Concept names, mappings, and prerequisites come from [`scripts/config_cache.json`](scripts/config_cache.json), sourced from the Exercism Elixir track configuration. Offline output reflects that cached snapshot.
 
-This section documents how this document is built, so that a future AI assistant (or a human) can regenerate or extend it without having to reverse-engineer the method from scratch.
-
-**Purpose.** This is a personal progress log for the Elixir track on Exercism, kept inside the local clone of the exercises (`/home/toyos/Projects/Elixir/exercism`, which is a symlink to `/home/toyos/exercism/elixir`). It tracks which exercises have been solved and which official Exercism *concepts* they map to, and cross-links the two tables so either one can be used as an index into the other.
-
-**Data sources (do not guess these — fetch them):**
-- The exercise directories themselves, one Mix project per folder, each with its own `.exercism/metadata.json` (contains the exercise slug and download info) and `README.md` (the exercise's instructions, whose "Introduction" section usually has a `## <Concept Name>` header naming the concept it teaches).
-- The Exercism Elixir track's public config file: `https://raw.githubusercontent.com/exercism/elixir/main/config.json`. This is the authoritative source for:
-  - `concepts`: the full list of concept slugs/names (60 at the time of writing).
-  - `exercises.concept`: for every concept exercise, its `slug`, the `concepts` it teaches, its `prerequisites` (concept slugs required before it unlocks), and `status` (`active`, `wip`, or `deprecated` — skip deprecated ones; `wip` ones exist in the taxonomy but may not be downloadable/completed yet).
-- The exercise's own page on exercism.org, at `https://exercism.org/tracks/elixir/exercises/<slug>`, and each concept's own page at `https://exercism.org/tracks/elixir/concepts/<slug>` — both are only ever linked, never fetched for content (the concept overview page is client-side rendered and cannot be scraped as plain text; the per-exercise/per-concept pages were not fetched individually, their URLs are just deterministic from the slug).
-
-**The regeneration script now exists — use it instead of rebuilding this by hand.** `scripts/build_readme.py` regenerates both tables below from scratch every time it runs. It only ever touches the text between the `<!-- BEGIN GENERATED: ... -->` / `<!-- END GENERATED: ... -->` HTML comment markers around each table; everything else in this file (this section included) is left alone.
-
-- `scripts/config_cache.json` — a cached copy of Exercism's track `config.json` (fetched fresh on every online run, reused as-is with `--offline`).
-- `scripts/descriptions.json` — the one piece of data that can't be derived automatically: a hand-written one-line `description` per exercise slug and per concept slug. This is what you edit when adding a new exercise.
-- Run it with `python3 scripts/build_readme.py` (fetches the latest `config.json`) or `python3 scripts/build_readme.py --offline` (reuses the cache, no network needed). It prints a warning to stderr listing any completed exercise or any concept that's missing an entry in `descriptions.json`, so nothing gets silently skipped.
-
-**What the script does, for reference (read the script itself for the exact logic, this is just the shape of it):**
-- Determines exercise order and which exercises are "completed" by scanning the exercism root for folders with a `.exercism/metadata.json`, sorted by that file's mtime.
-- Builds the concept dependency graph from `config.json`'s `exercises.concept[].concepts`/`.prerequisites` (skipping `deprecated` exercises), topologically sorts it (Kahn's algorithm, ties broken alphabetically) to get each concept's row number, and derives "unlocks" as the reverse edge of "prerequisites".
-- For the **Exercises** table: links each concept in the "Concepts" column to `[N. Concept Name](.../concepts/slug)` using that concept's row number from the Concepts table (built first, so the number exists) — same idea in reverse for the Concepts table's "Taught by" column, which links back to the exercise's row number in the Exercises table.
-- Also reads `config.json`'s `exercises.practice[].practices` list, so once every concept exercise is exhausted and only **practice exercises** remain (there are ~126 of those left at the time of writing — they don't map 1:1 to a single new concept, they reinforce several already-taught ones), the script can still link a practice exercise's "Concepts" cell to the concepts it practices, without needing any new manual bookkeeping.
-- Both `(+)` links (`https://exercism.org/tracks/elixir/exercises/<slug>` and `.../concepts/<slug>`) are generated from the slug, never fetched.
-
-**Two gotchas hit while building the original version of this script — both are already handled inside `build_readme.py`, but keep them in mind if you ever rewrite it:**
-1. Some descriptions contain a literal backslash-escaped pipe (`` \| ``, e.g. `` `[head \| tail]` `` or `` `\|>` `` for the pipe operator). A naive `line.split('|')`, or any *fixed*-column-index approach, miscounts columns on exactly those rows, because the escaped pipe still contains a literal `|` character indistinguishable from a real column separator by plain string splitting. `build_readme.py` never splits existing rows at all — it renders each cell from structured data and writes whole new rows — so this can't recur here, but it will bite again if you ever manipulate the tables with row-splitting instead of regenerating them.
-2. `re.sub`/`re.subn` treat backslashes **in a plain string replacement** as escape sequences — `\\` in the replacement is interpreted as "one literal backslash", silently halving Elixir's `` `\\` `` default-argument syntax wherever it appeared in a generated table. The fix (already in `splice()`) is to pass a *function* as the replacement (`pattern.subn(lambda m: replacement, text)`), whose return value is inserted verbatim with no escape processing. After any regex-based text surgery on this file, grep for `` `\\` `` and `` \| `` across the result to make sure they survived.
-
-**When a new exercise is completed:**
-1. Add its one-line description to `scripts/descriptions.json` under `exercise_descriptions` (and, if it's a new concept exercise, the matching concept's description under `concept_descriptions` if not already present).
-2. Run `python3 scripts/build_readme.py`.
-3. Check the warnings on stderr are gone, then read the diff before trusting it.
-
-This file is maintained in English. If asked to translate it again, translate the prose (headers, descriptions in `descriptions.json`, this closing section) but keep concept names, exercise slugs, and URLs unchanged, since those are proper nouns / identifiers.
+Only the regions inside the `BEGIN GENERATED` / `END GENERATED` markers are replaced. Keep those markers intact, address any missing-description warnings, and review the diff after regeneration. The tables describe local availability and track relationships, not verified completion status. Keep this README and its descriptions in English.
