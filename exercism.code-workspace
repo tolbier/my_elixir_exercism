@@ -56,6 +56,9 @@
 			"path": "rail-fence-cipher"
 		},
 		{
+			"path": "relative-distance"
+		},
+		{
 			"path": "saddle-points"
 		},
 		{
