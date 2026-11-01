@@ -59,6 +59,9 @@
 			"path": "relative-distance"
 		},
 		{
+			"path": "robot-simulator"
+		},
+		{
 			"path": "saddle-points"
 		},
 		{
