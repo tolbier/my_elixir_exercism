@@ -83,12 +83,9 @@ defmodule Connect do
   defp goal_reached?(%{width: width}, {x, _y}, :X), do: x == width - 1
   defp goal_reached?(%{height: height}, {_x, y}, :O), do: y == height - 1
 
-  @doc """
-  Returns adjacent coordinates occupied by the given player.
-  """
   @spec player_neighbors(t(), coord(), player()) :: [coord()]
-  def player_neighbors(connect, coords, player)
-      when player in [:X, :O] do
+  defp player_neighbors(connect, coords, player)
+       when player in [:X, :O] do
     coords
     |> neighbor_coords()
     |> filter_player_coords(connect, player)
@@ -112,12 +109,8 @@ defmodule Connect do
     ]
   end
 
-  @doc """
-  Converts rows into a Connect struct, with zero-based {column, row} coordinates.
-  Empty cells are omitted from the board map, but still count toward its dimensions.
-  """
   @spec parse_board([String.t()]) :: t()
-  def parse_board(str_list) do
+  defp parse_board(str_list) do
     board =
       for {row, y} <- Enum.with_index(str_list),
           {cell, x} <- Enum.with_index(String.graphemes(row)),
