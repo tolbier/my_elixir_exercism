@@ -68,6 +68,41 @@ arriba y ejecutar `mix deps.get` antes de continuar.
 3. `mix credo` — intentar arreglar los avisos que salgan.
 4. `mix dialyzer` — intentar arreglar los avisos que salgan.
 
+## Preferencias de estilo del usuario
+
+El usuario prefiere código Elixir legible, explícito y con una complejidad
+algorítmica razonada. Aplicar estas preferencias al implementar o refactorizar:
+
+- Usar funciones pequeñas con una responsabilidad clara y nombres en inglés que
+  expresen su propósito. Preferir `parse_board` a nombres que describan toda la
+  representación interna, y `count_adjacent_flowers` para una función que cuenta.
+- Separar pasos conceptuales: generar candidatos, comprobar cuáles cumplen una
+  condición, contar y dar formato al resultado. Por ejemplo, generar coordenadas
+  vecinas y después contar con `Enum.count/2` las que contienen una flor.
+- Usar pipelines para expresar transformaciones sucesivas de forma fácil de leer.
+  Preferir pattern matching y cláusulas de función para casos simples; evitar
+  anidamiento excesivo de `if` o `case`.
+- Extraer helpers cuando aclaren una responsabilidad. Fusionar funciones que solo
+  añadan un nivel de indirección sin aportar significado; evitar abstracciones
+  innecesarias y no perseguir la máxima concisión.
+- Elegir las estructuras de datos según las operaciones: listas para recorridos
+  secuenciales, tuplas para acceso frecuente por índice, mapas para consultas por
+  clave y `MapSet` para pertenencia o visitados. Evitar recorridos repetidos y
+  conversiones innecesarias; considerar su coste asintótico.
+- Mantener los datos originales como fuente de consulta y construir el resultado
+  mediante transformaciones, por ejemplo con comprensiones que conserven las filas.
+- Añadir `@spec` a las funciones y usar tipos de dominio como `coord()` o `board()`
+  cuando reduzcan repetición y aclaren la intención. Los tipos deben reflejar los
+  valores reales, incluidas coordenadas negativas al generar vecinos.
+- Mantener pública solo la API necesaria. Los helpers internos deben ser privados;
+  comprobar su comportamiento mediante la API pública en lugar de exponerlos solo
+  para escribir tests.
+- Mantener nombres y documentación del código en inglés. Añadir comentarios para
+  explicar decisiones o restricciones poco evidentes, sin narrar operaciones obvias.
+- Favorecer refactors pequeños y justificados que conserven el comportamiento.
+  Estas preferencias no autorizan a completar partes del ejercicio que el usuario
+  todavía quiere resolver por su cuenta.
+
 ## Cómo ayudar a resolver un ejercicio
 
 El usuario quiere ir descubriendo la solución paso a paso, no que se resuelva el ejercicio completo de una vez.
