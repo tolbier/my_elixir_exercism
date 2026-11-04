@@ -17,6 +17,9 @@
 			"path": "change"
 		},
 		{
+			"path": "connect"
+		},
+		{
 			"path": "custom-set"
 		},
 		{
