@@ -38,6 +38,9 @@ defmodule Connect do
     |> path_to_goal?(connect, player, MapSet.new())
   end
 
+  # Work around MapSet/:sets opacity warnings in OTP 29's Dialyzer.
+  # https://github.com/elixir-lang/elixir/issues/14837
+  @dialyzer {:no_opaque, path_to_goal?: 4}
   @spec path_to_goal?([coord()], t(), player(), MapSet.t(coord())) :: boolean()
   defp path_to_goal?([], _connect, _player, _visited), do: false
 
