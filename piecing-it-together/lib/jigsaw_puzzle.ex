@@ -31,42 +31,38 @@ defmodule JigsawPuzzle do
           )
       )
 
-  @spec infer_core(t()) :: t() | {:error, String.t()}
+  @spec rows_and_columns(number(), number()) :: t()
+  defp rows_and_columns(rows, columns),
+    do: %__MODULE__{rows: trunc(rows), columns: trunc(columns)}
+
+  @spec infer_core(%__MODULE__{rows: number() | nil, columns: number() | nil}) ::
+          t() | {:error, String.t()}
+  defp infer_core(%__MODULE__{rows: rows, columns: columns})
+       when positive?(rows) and positive?(columns),
+       do: rows_and_columns(rows, columns)
 
   defp infer_core(%__MODULE__{
          pieces: pieces,
          aspect_ratio: aspect_ratio
        })
        when positive?(pieces) and positive?(aspect_ratio),
-       do: %__MODULE__{
-         pieces: pieces,
-         aspect_ratio: aspect_ratio
-       }
+       do: rows_and_columns(:math.sqrt(pieces / aspect_ratio), :math.sqrt(pieces * aspect_ratio))
 
   defp infer_core(%__MODULE__{
          format: :square,
          rows: rows
        })
        when positive?(rows),
-       do: infer_core(%__MODULE__{aspect_ratio: 1.0, pieces: rows * rows})
+       do: rows_and_columns(rows, rows)
 
   defp infer_core(%__MODULE__{
          aspect_ratio: 1.0,
          inside: inside
        })
-       when positive?(inside),
-       do: infer_core(%__MODULE__{format: :square, rows: trunc(:math.sqrt(inside)) + 2})
-
-  defp infer_core(%__MODULE__{
-         columns: columns,
-         rows: rows
-       })
-       when positive?(columns) and positive?(rows),
-       do:
-         infer_core(%__MODULE__{
-           pieces: columns * rows,
-           aspect_ratio: columns / rows
-         })
+       when positive?(inside) do
+    rows = trunc(:math.sqrt(inside)) + 2
+    rows_and_columns(rows, rows)
+  end
 
   defp infer_core(%__MODULE__{
          aspect_ratio: aspect_ratio,
@@ -87,31 +83,16 @@ defmodule JigsawPuzzle do
        when format in @formats and positive?(pieces) and positive?(border),
        do:
          (case {Enum.sort(quadratic_roots(2, -border - 4, pieces * 2)), format} do
-            {[rows], :square} ->
-              infer_core(%__MODULE__{format: :square, rows: rows})
-
-            {[columns, rows], :portrait} ->
-              infer_core(%__MODULE__{rows: rows, columns: columns})
-
-            {[rows, columns], :landscape} ->
-              infer_core(%__MODULE__{rows: rows, columns: columns})
-
-            _ ->
-              {:error, "Insufficient data"}
+            {[rows], :square} -> rows_and_columns(rows, rows)
+            {[columns, rows], :portrait} -> rows_and_columns(rows, columns)
+            {[rows, columns], :landscape} -> rows_and_columns(rows, columns)
+            _ -> {:error, "Insufficient data"}
           end)
 
   defp infer_core(_puzzle), do: {:error, "Insufficient data"}
 
   @spec build(t()) :: t()
-  defp build(%__MODULE__{pieces: pieces, aspect_ratio: aspect_ratio}),
-    do:
-      build(
-        trunc(:math.sqrt(pieces / aspect_ratio)),
-        trunc(:math.sqrt(pieces * aspect_ratio))
-      )
-
-  @spec build(integer(), integer()) :: t()
-  defp build(rows, columns) do
+  defp build(%__MODULE__{rows: rows, columns: columns}) do
     pieces = rows * columns
     aspect_ratio = columns / rows
     border = 2 * rows + 2 * columns - 4
