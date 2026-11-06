@@ -106,14 +106,14 @@ defmodule JigsawPuzzle do
   @spec roots(number(), number(), number()) :: [float()]
   defp roots(a, b, c) when a != 0 do
     discriminant = b * b - 4 * a * c
-    roots(a, b, c, discriminant)
+    roots_from_discriminant(a, b, discriminant)
   end
 
-  @spec roots(number(), number(), number(), number()) :: [float()]
-  defp roots(a, b, _c, discriminant) when discriminant == 0, do: [-b / (2 * a)]
-  defp roots(_a, _b, _c, discriminant) when discriminant < 0, do: []
+  @spec roots_from_discriminant(number(), number(), number()) :: [float()]
+  defp roots_from_discriminant(a, b, discriminant) when discriminant == 0, do: [-b / (2 * a)]
+  defp roots_from_discriminant(_a, _b, discriminant) when discriminant < 0, do: []
 
-  defp roots(a, b, _c, discriminant) do
+  defp roots_from_discriminant(a, b, discriminant) do
     root = :math.sqrt(discriminant)
     [(-b + root) / (2 * a), (-b - root) / (2 * a)]
   end
