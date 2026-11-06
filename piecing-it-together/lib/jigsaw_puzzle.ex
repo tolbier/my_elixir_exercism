@@ -18,17 +18,12 @@ defmodule JigsawPuzzle do
   defstruct [:pieces, :rows, :columns, :format, :aspect_ratio, :border, :inside]
   @formats [:landscape, :portrait, :square]
 
-  @spec data(jigsaw_puzzle :: JigsawPuzzle.t()) ::
-          {:ok, JigsawPuzzle.t()} | {:error, String.t()}
+  @spec data(t()) :: {:ok, t()} | {:error, String.t()}
   def data(puzzle),
     do:
       with(
         core = %__MODULE__{} <- infer_core(puzzle),
-        do:
-          compare(
-            original: puzzle,
-            completed: build(core)
-          )
+        do: compare(original: puzzle, completed: build(core))
       )
 
   @spec rows_and_columns(number(), number()) :: t()
@@ -37,56 +32,38 @@ defmodule JigsawPuzzle do
 
   @spec infer_core(%__MODULE__{rows: number() | nil, columns: number() | nil}) ::
           t() | {:error, String.t()}
+  defp infer_core(puzzle \\ %__MODULE__{})
+
   defp infer_core(%__MODULE__{rows: rows, columns: columns})
        when positive?(rows) and positive?(columns),
        do: rows_and_columns(rows, columns)
 
-  defp infer_core(%__MODULE__{
-         pieces: pieces,
-         aspect_ratio: aspect_ratio
-       })
+  defp infer_core(%__MODULE__{pieces: pieces, aspect_ratio: aspect_ratio})
        when positive?(pieces) and positive?(aspect_ratio),
        do: rows_and_columns(:math.sqrt(pieces / aspect_ratio), :math.sqrt(pieces * aspect_ratio))
 
-  defp infer_core(%__MODULE__{
-         format: :square,
-         rows: rows
-       })
+  defp infer_core(%__MODULE__{format: :square, rows: rows})
        when positive?(rows),
        do: rows_and_columns(rows, rows)
 
-  defp infer_core(%__MODULE__{
-         aspect_ratio: 1.0,
-         inside: inside
-       })
+  defp infer_core(%__MODULE__{aspect_ratio: 1.0, inside: inside})
        when positive?(inside) do
     rows = trunc(:math.sqrt(inside)) + 2
     rows_and_columns(rows, rows)
   end
 
-  defp infer_core(%__MODULE__{
-         aspect_ratio: aspect_ratio,
-         rows: rows
-       })
+  defp infer_core(%__MODULE__{aspect_ratio: aspect_ratio, rows: rows})
        when positive?(aspect_ratio) and positive?(rows),
-       do:
-         infer_core(%__MODULE__{
-           rows: rows,
-           columns: rows * aspect_ratio
-         })
+       do: rows_and_columns(rows, rows * aspect_ratio)
 
-  defp infer_core(%__MODULE__{
-         format: format,
-         pieces: pieces,
-         border: border
-       })
+  defp infer_core(%__MODULE__{format: format, pieces: pieces, border: border})
        when format in @formats and positive?(pieces) and positive?(border),
        do:
-         (case {Enum.sort(quadratic_roots(2, -border - 4, pieces * 2)), format} do
+         (case {Enum.sort(roots(2, -border - 4, pieces * 2)), format} do
             {[rows], :square} -> rows_and_columns(rows, rows)
             {[columns, rows], :portrait} -> rows_and_columns(rows, columns)
             {[rows, columns], :landscape} -> rows_and_columns(rows, columns)
-            _ -> {:error, "Insufficient data"}
+            _ -> infer_core()
           end)
 
   defp infer_core(_puzzle), do: {:error, "Insufficient data"}
@@ -126,20 +103,18 @@ defmodule JigsawPuzzle do
         else: {:error, "Contradictory data"}
       )
 
-  @spec quadratic_roots(number(), number(), number()) :: [float()]
-  defp quadratic_roots(a, b, c) when a != 0 do
+  @spec roots(number(), number(), number()) :: [float()]
+  defp roots(a, b, c) when a != 0 do
     discriminant = b * b - 4 * a * c
+    roots(a, b, c, discriminant)
+  end
 
-    cond do
-      discriminant < 0 ->
-        []
+  @spec roots(number(), number(), number(), number()) :: [float()]
+  defp roots(a, b, _c, discriminant) when discriminant == 0, do: [-b / (2 * a)]
+  defp roots(_a, _b, _c, discriminant) when discriminant < 0, do: []
 
-      discriminant == 0 ->
-        [-b / (2 * a)]
-
-      discriminant > 0 ->
-        root = :math.sqrt(discriminant)
-        [(-b + root) / (2 * a), (-b - root) / (2 * a)]
-    end
+  defp roots(a, b, _c, discriminant) do
+    root = :math.sqrt(discriminant)
+    [(-b + root) / (2 * a), (-b - root) / (2 * a)]
   end
 end
