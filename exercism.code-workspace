@@ -59,6 +59,9 @@
 			"path": "palindrome-products"
 		},
 		{
+			"path": "piecing-it-together"
+		},
+		{
 			"path": "prism"
 		},
 		{
@@ -112,7 +115,8 @@
 			"editor.defaultFormatter": "jakebecker.elixir-ls",
 			"editor.formatOnSave": true
 		},
-		"elixirLS.autoBuild": false
+		"elixirLS.autoBuild": false,
+		"elixirLS.enableTestLenses": true
 	},
 	"launch": {
 		"version": "0.2.0",
