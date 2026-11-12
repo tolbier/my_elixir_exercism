@@ -68,6 +68,9 @@
 			"path": "pythagorean-triplet"
 		},
 		{
+			"path": "queen-attack"
+		},
+		{
 			"path": "rail-fence-cipher"
 		},
 		{
