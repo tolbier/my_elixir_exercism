@@ -5,7 +5,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(["", ""]) == ["", ""]
   end
 
-  # @tag :pending
   test "no rows" do
     input = []
     expected = []
@@ -13,7 +12,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "no columns" do
     input = [""]
     expected = [""]
@@ -21,7 +19,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "no flowers" do
     input = [
       "   ",
@@ -38,7 +35,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "flowers only" do
     input = [
       "***",
@@ -55,7 +51,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "flower surrounded by spaces" do
     input = [
       "   ",
@@ -72,7 +67,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "space surrounded by flowers" do
     input = [
       "***",
@@ -89,7 +83,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "horizontal line" do
     input = [
       " * * "
@@ -102,7 +95,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "horizontal line, flowers at edges" do
     input = [
       "*   *"
@@ -115,7 +107,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "vertical line" do
     input = [
       " ",
@@ -136,7 +127,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "vertical line, flowers at edges" do
     input = [
       "*",
@@ -157,7 +147,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "cross" do
     input = [
       "  *  ",
@@ -178,7 +167,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "large garden" do
     input = [
       " *  * ",
@@ -201,7 +189,6 @@ defmodule FlowerFieldTest do
     assert FlowerField.annotate(input) == expected
   end
 
-  @tag :pending
   test "multiple adjacent flowers" do
     input = [" ** "]
     expected = ["1**1"]

@@ -2,55 +2,46 @@ defmodule BafflingBirthdaysTest do
   use ExUnit.Case
 
   describe "shared birthday" do
-    # @tag :pending
     test "one birthdate" do
       birthdates = [~D[2000-01-01]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == false
     end
 
-    @tag :pending
     test "two birthdates with same year, month, and day" do
       birthdates = [~D[2000-01-01], ~D[2000-01-01]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == true
     end
 
-    @tag :pending
     test "two birthdates with same year and month, but different day" do
       birthdates = [~D[2012-05-09], ~D[2012-05-17]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == false
     end
 
-    @tag :pending
     test "two birthdates with same month and day, but different year" do
       birthdates = [~D[1999-10-23], ~D[1988-10-23]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == true
     end
 
-    @tag :pending
     test "two birthdates with same year, but different month and day" do
       birthdates = [~D[2007-12-19], ~D[2007-04-27]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == false
     end
 
-    @tag :pending
     test "two birthdates with different year, month, and day" do
       birthdates = [~D[1997-08-04], ~D[1963-11-23]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == false
     end
 
-    @tag :pending
     test "multiple birthdates without shared birthday" do
       birthdates = [~D[1966-07-29], ~D[1977-02-12], ~D[2001-12-25], ~D[1980-11-10]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == false
     end
 
-    @tag :pending
     test "multiple birthdates with one shared birthday" do
       birthdates = [~D[1966-07-29], ~D[1977-02-12], ~D[2001-07-29], ~D[1980-11-10]]
       assert BafflingBirthdays.shared_birthday?(birthdates) == true
     end
 
-    @tag :pending
     test "multiple birthdates with more than one shared birthday" do
       birthdates = [
         ~D[1966-07-29],
@@ -65,21 +56,18 @@ defmodule BafflingBirthdaysTest do
   end
 
   describe "random birthdates" do
-    @tag :pending
     test "generate requested number of birthdates" do
       group_size = 3000
       dates = BafflingBirthdays.random_birthdates(group_size)
       assert length(dates) == group_size
     end
 
-    @tag :pending
     test "years are not leap years" do
       group_size = 3000
       dates = BafflingBirthdays.random_birthdates(group_size)
       refute Enum.any?(dates, &Date.leap_year?/1)
     end
 
-    @tag :pending
     test "months are random" do
       group_size = 3000
       dates = BafflingBirthdays.random_birthdates(group_size)
@@ -108,7 +96,6 @@ defmodule BafflingBirthdaysTest do
       assert counts_outside_95_percent_confidence_interval <= 6
     end
 
-    @tag :pending
     test "days are random" do
       group_size = 30000
       dates = BafflingBirthdays.random_birthdates(group_size)
@@ -146,13 +133,11 @@ defmodule BafflingBirthdaysTest do
   end
 
   describe "estimated probability of at least one shared birthday" do
-    @tag :pending
     test "for one person" do
       group_size = 1
       assert BafflingBirthdays.estimated_probability_of_shared_birthday(group_size) == 0.0
     end
 
-    @tag :pending
     test "among ten people" do
       group_size = 10
       expected = 11.694818
@@ -168,7 +153,6 @@ defmodule BafflingBirthdaysTest do
       )
     end
 
-    @tag :pending
     test "among twenty-three people" do
       group_size = 23
       expected = 50.729723
@@ -184,7 +168,6 @@ defmodule BafflingBirthdaysTest do
       )
     end
 
-    @tag :pending
     test "among seventy people" do
       group_size = 70
       expected = 99.915958

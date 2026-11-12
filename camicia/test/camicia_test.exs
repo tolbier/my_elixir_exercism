@@ -1,7 +1,6 @@
 defmodule CamiciaTest do
   use ExUnit.Case
 
-  # @tag :pending
   test "two cards, one trick" do
     player_a = ["2"]
     player_b = ["3"]
@@ -9,7 +8,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "three cards, one trick" do
     player_a = ["2", "4"]
     player_b = ["3"]
@@ -17,7 +15,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "four cards, one trick" do
     player_a = ["2", "4"]
     player_b = ["3", "5", "6"]
@@ -25,7 +22,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the ace reigns supreme" do
     player_a = ["2", "A"]
     player_b = ["3", "4", "5", "6", "7"]
@@ -33,7 +29,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the king beats ace" do
     player_a = ["2", "A"]
     player_b = ["3", "4", "5", "6", "K"]
@@ -41,7 +36,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the queen seduces the king" do
     player_a = ["2", "A", "7", "8", "Q"]
     player_b = ["3", "4", "5", "6", "K"]
@@ -49,7 +43,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the jack betrays the queen" do
     player_a = ["2", "A", "7", "8", "Q"]
     player_b = ["3", "4", "5", "6", "K", "9", "J"]
@@ -57,7 +50,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the 10 just wants to put on a show" do
     player_a = ["2", "A", "7", "8", "Q", "10"]
     player_b = ["3", "4", "5", "6", "K", "9", "J"]
@@ -65,7 +57,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "simple loop with decks of 3 cards" do
     player_a = ["J", "2", "3"]
     player_b = ["4", "J", "5"]
@@ -73,7 +64,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "the story is starting to get a bit complicated" do
     player_a = [
       "2",
@@ -446,7 +436,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "two tricks" do
     player_a = ["J"]
     player_b = ["3", "J"]
@@ -454,7 +443,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "more tricks" do
     player_a = ["J", "2", "4"]
     player_b = ["3", "J", "A"]
@@ -462,7 +450,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "simple loop with decks of 4 cards" do
     player_a = ["2", "3", "J", "6"]
     player_b = ["K", "5", "J", "7"]
@@ -470,7 +457,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "easy card combination" do
     player_a = [
       "4",
@@ -534,7 +520,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "easy card combination, inverted decks" do
     player_a = [
       "3",
@@ -598,7 +583,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "mirrored decks" do
     player_a = [
       "2",
@@ -662,7 +646,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "opposite decks" do
     player_a = [
       "4",
@@ -726,7 +709,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "random decks #1" do
     player_a = [
       "K",
@@ -790,7 +772,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "random decks #2" do
     player_a = [
       "8",
@@ -854,7 +835,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Kleber 1999" do
     player_a = [
       "4",
@@ -918,7 +898,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Collins 2006" do
     player_a = [
       "A",
@@ -982,7 +961,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Mann and Wu 2007" do
     player_a = [
       "K",
@@ -1046,7 +1024,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Nessler 2012" do
     player_a = [
       "10",
@@ -1110,7 +1087,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Anderson 2013" do
     player_a = [
       "6",
@@ -1174,7 +1150,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Rucklidge 2014" do
     player_a = [
       "8",
@@ -1238,7 +1213,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Nessler 2021" do
     player_a = [
       "7",
@@ -1302,7 +1276,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Nessler 2022" do
     player_a = [
       "2",
@@ -1366,7 +1339,6 @@ defmodule CamiciaTest do
     assert Camicia.simulate(player_a, player_b) == expected
   end
 
-  @tag :pending
   test "Casella 2024, first infinite game found" do
     player_a = [
       "2",

@@ -1,31 +1,26 @@
 defmodule SplitSecondStopwatchTest do
   use ExUnit.Case
 
-  # @tag :pending
   test "new stopwatch starts in ready state" do
     stopwatch = SplitSecondStopwatch.new()
     assert SplitSecondStopwatch.state(stopwatch) == :ready
   end
 
-  @tag :pending
   test "new stopwatch's current lap has no elapsed time" do
     stopwatch = SplitSecondStopwatch.new()
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:00:00]
   end
 
-  @tag :pending
   test "new stopwatch's total has no elapsed time" do
     stopwatch = SplitSecondStopwatch.new()
     assert SplitSecondStopwatch.total(stopwatch) == ~T[00:00:00]
   end
 
-  @tag :pending
   test "new stopwatch does not have previous laps" do
     stopwatch = SplitSecondStopwatch.new()
     assert SplitSecondStopwatch.previous_laps(stopwatch) == []
   end
 
-  @tag :pending
   test "start from ready state changes state to running" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -34,7 +29,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.state(stopwatch) == :running
   end
 
-  @tag :pending
   test "start does not change previous laps" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -43,7 +37,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.previous_laps(stopwatch) == []
   end
 
-  @tag :pending
   test "start initiates time tracking for current lap" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -53,7 +46,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:00:05]
   end
 
-  @tag :pending
   test "start initiates time tracking for total" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -63,7 +55,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.total(stopwatch) == ~T[00:00:23]
   end
 
-  @tag :pending
   test "start cannot be called from running state" do
     output =
       SplitSecondStopwatch.new()
@@ -73,7 +64,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot start an already running stopwatch"}
   end
 
-  @tag :pending
   test "stop from running state changes state to stopped" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -83,7 +73,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.state(stopwatch) == :stopped
   end
 
-  @tag :pending
   test "stop pauses time tracking for current lap" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -95,7 +84,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:00:05]
   end
 
-  @tag :pending
   test "stop pauses time tracking for total" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -107,7 +95,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.total(stopwatch) == ~T[00:00:13]
   end
 
-  @tag :pending
   test "stop cannot be called from ready state" do
     output =
       SplitSecondStopwatch.new()
@@ -116,7 +103,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot stop a stopwatch that is not running"}
   end
 
-  @tag :pending
   test "stop cannot be called from stopped state" do
     output =
       SplitSecondStopwatch.new()
@@ -127,7 +113,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot stop a stopwatch that is not running"}
   end
 
-  @tag :pending
   test "start from stopped state changes state to running" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -138,7 +123,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.state(stopwatch) == :running
   end
 
-  @tag :pending
   test "start from stopped state resumes time tracking for current lap" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -152,7 +136,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:01:28]
   end
 
-  @tag :pending
   test "start from stopped state resumes time tracking for total" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -166,7 +149,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.total(stopwatch) == ~T[00:00:32]
   end
 
-  @tag :pending
   test "lap adds current lap to previous laps" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -189,7 +171,6 @@ defmodule SplitSecondStopwatchTest do
            ]
   end
 
-  @tag :pending
   test "lap resets current lap and resumes time tracking" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -203,7 +184,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:00:15]
   end
 
-  @tag :pending
   test "lap continues time tracking for total" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -215,7 +195,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.total(stopwatch) == ~T[00:00:55]
   end
 
-  @tag :pending
   test "lap cannot be called from ready state" do
     output =
       SplitSecondStopwatch.new()
@@ -224,7 +203,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot lap a stopwatch that is not running"}
   end
 
-  @tag :pending
   test "lap cannot be called from stopped state" do
     output =
       SplitSecondStopwatch.new()
@@ -235,7 +213,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot lap a stopwatch that is not running"}
   end
 
-  @tag :pending
   test "stop does not change previous laps" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -254,7 +231,6 @@ defmodule SplitSecondStopwatchTest do
            ]
   end
 
-  @tag :pending
   test "reset from stopped state changes state to ready" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -265,7 +241,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.state(stopwatch) == :ready
   end
 
-  @tag :pending
   test "reset resets current lap" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -277,7 +252,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.current_lap(stopwatch) == ~T[00:00:00]
   end
 
-  @tag :pending
   test "reset clears previous laps" do
     stopwatch =
       SplitSecondStopwatch.new()
@@ -300,7 +274,6 @@ defmodule SplitSecondStopwatchTest do
     assert SplitSecondStopwatch.previous_laps(stopwatch) == []
   end
 
-  @tag :pending
   test "reset cannot be called from ready state" do
     output =
       SplitSecondStopwatch.new()
@@ -309,7 +282,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot reset a stopwatch that is not stopped"}
   end
 
-  @tag :pending
   test "reset cannot be called from running state" do
     output =
       SplitSecondStopwatch.new()
@@ -319,7 +291,6 @@ defmodule SplitSecondStopwatchTest do
     assert output == {:error, "cannot reset a stopwatch that is not stopped"}
   end
 
-  @tag :pending
   test "supports very long laps" do
     stopwatch =
       SplitSecondStopwatch.new()

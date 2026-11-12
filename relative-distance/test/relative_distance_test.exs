@@ -1,7 +1,6 @@
 defmodule RelativeDistanceTest do
   use ExUnit.Case
 
-  # @tag :pending
   test "Direct parent-child relation" do
     family_tree = %{"Vera" => ["Tomoko"], "Tomoko" => ["Aditi"]}
     person_a = "Vera"
@@ -9,7 +8,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == 1
   end
 
-  @tag :pending
   test "Sibling relationship" do
     family_tree = %{"Dalia" => ["Olga", "Yassin"]}
     person_a = "Olga"
@@ -17,7 +15,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == 1
   end
 
-  @tag :pending
   test "Two degrees of separation, grandchild" do
     family_tree = %{"Khadija" => ["Mateo"], "Mateo" => ["Rami"]}
     person_a = "Khadija"
@@ -25,7 +22,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == 2
   end
 
-  @tag :pending
   test "Unrelated individuals" do
     family_tree = %{"Kaito" => ["Elif"], "Priya" => ["Rami"]}
     person_a = "Priya"
@@ -33,7 +29,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == nil
   end
 
-  @tag :pending
   test "Complex graph, cousins" do
     family_tree = %{
       "Aiko" => ["Bao", "Carlos"],
@@ -95,7 +90,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == 9
   end
 
-  @tag :pending
   test "Complex graph, no shortcut, far removed nephew" do
     family_tree = %{
       "Aiko" => ["Bao", "Carlos"],
@@ -157,7 +151,6 @@ defmodule RelativeDistanceTest do
     assert RelativeDistance.degree_of_separation(family_tree, person_a, person_b) == 14
   end
 
-  @tag :pending
   test "Complex graph, some shortcuts, cross-down and cross-up, cousins several times removed, with unrelated family tree" do
     family_tree = %{
       "Aiko" => ["Bao", "Carlos"],

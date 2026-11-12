@@ -1,7 +1,6 @@
 defmodule JigsawPuzzleTest do
   use ExUnit.Case
 
-  # @tag :pending
   test "1000 pieces puzzle with 1.6 aspect ratio" do
     incomplete_puzzle = %JigsawPuzzle{
       pieces: 1000,
@@ -22,7 +21,6 @@ defmodule JigsawPuzzleTest do
     assert JigsawPuzzle.data(incomplete_puzzle) == {:ok, expected}
   end
 
-  # @tag :pending
   test "square puzzle with 32 rows" do
     incomplete_puzzle = %JigsawPuzzle{
       format: :square,
@@ -43,7 +41,6 @@ defmodule JigsawPuzzleTest do
     assert JigsawPuzzle.data(incomplete_puzzle) == {:ok, expected}
   end
 
-  # @tag :pending
   test "400 pieces square puzzle with only inside pieces and aspect ratio" do
     incomplete_puzzle = %JigsawPuzzle{
       aspect_ratio: 1.0,
@@ -64,7 +61,6 @@ defmodule JigsawPuzzleTest do
     assert JigsawPuzzle.data(incomplete_puzzle) == {:ok, expected}
   end
 
-  # @tag :pending
   test "1500 pieces landscape puzzle with 30 rows and 1.6 aspect ratio" do
     incomplete_puzzle = %JigsawPuzzle{
       aspect_ratio: 5 / 3,
@@ -115,7 +111,6 @@ defmodule JigsawPuzzleTest do
     assert JigsawPuzzle.data(incomplete_puzzle) == {:error, "Insufficient data"}
   end
 
-  # @tag :pending
   test "puzzle with contradictory data" do
     incomplete_puzzle = %JigsawPuzzle{
       columns: 1000,

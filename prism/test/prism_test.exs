@@ -1,28 +1,24 @@
 defmodule PrismTest do
   use ExUnit.Case
 
-  # @tag :pending
   test "zero prisms" do
     prisms = []
     start = %{angle: 0, x: 0, y: 0}
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "one prism one hit" do
     prisms = [%{id: 1, angle: 0, x: 10, y: 0}]
     start = %{angle: 0, x: 0, y: 0}
     assert Prism.find_sequence(prisms, start) == [1]
   end
 
-  @tag :pending
   test "one prism zero hits" do
     prisms = [%{id: 1, angle: 0, x: -10, y: 0}]
     start = %{angle: 0, x: 0, y: 0}
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "going up zero hits" do
     prisms = [
       %{id: 3, angle: 0, x: 0, y: -10},
@@ -34,7 +30,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "going down zero hits" do
     prisms = [
       %{id: 1, angle: 0, x: 10, y: 0},
@@ -46,7 +41,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "going left zero hits" do
     prisms = [
       %{id: 2, angle: 0, x: 0, y: 10},
@@ -58,7 +52,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "negative angle" do
     prisms = [
       %{id: 1, angle: 0, x: 0, y: -10},
@@ -70,14 +63,12 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "large angle" do
     prisms = [%{id: 1, angle: 0, x: 10, y: 0}]
     start = %{angle: 2340, x: 0, y: 0}
     assert Prism.find_sequence(prisms, start) == []
   end
 
-  @tag :pending
   test "upward refraction two hits" do
     prisms = [
       %{id: 1, angle: 0, x: 10, y: 10},
@@ -88,7 +79,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == [2, 1]
   end
 
-  @tag :pending
   test "downward refraction two hits" do
     prisms = [
       %{id: 1, angle: -90, x: 10, y: 0},
@@ -99,7 +89,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == [1, 2]
   end
 
-  @tag :pending
   test "same prism twice" do
     prisms = [
       %{id: 2, angle: 0, x: 10, y: 0},
@@ -110,7 +99,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == [2, 1, 2]
   end
 
-  @tag :pending
   test "simple path" do
     prisms = [
       %{id: 3, angle: 45, x: 30, y: 10},
@@ -123,7 +111,6 @@ defmodule PrismTest do
     assert Prism.find_sequence(prisms, start) == [2, 1, 3]
   end
 
-  @tag :pending
   test "multiple prisms floating point precision" do
     prisms = [
       %{id: 26, angle: 6.555, x: 5.8, y: 73.4},
@@ -211,7 +198,6 @@ defmodule PrismTest do
              ]
   end
 
-  @tag :pending
   test "complex path with multiple prisms floating point precision" do
     prisms = [
       %{id: 46, angle: -88.332, x: 37.4, y: 20.6},

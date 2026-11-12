@@ -56,6 +56,14 @@
    Luego `mix deps.get` y `mix credo` para revisar. Si avisa de `@moduledoc` faltante,
    añadir uno breve (en inglés) al módulo.
 
+5. Quitar los `@tag :pending` de los tests, para que `mix test` ejecute todos los tests
+   sin necesidad de `--include pending`. Borrar las líneas completas, incluidas las
+   comentadas (`# @tag :pending`):
+
+   ```
+   sed -i -E '/^\s*(#\s*)?@tag :pending\s*$/d' <slug>/test/*_test.exs
+   ```
+
 ## Chequeo final
 
 Cuando el usuario pida el "chequeo final" (o equivalente) de un ejercicio, consiste en:

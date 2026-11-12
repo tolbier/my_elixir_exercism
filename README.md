@@ -41,7 +41,7 @@ For a final check, first add any missing `@spec` annotations, then run `mix test
 exercism download --exercise=<slug> --track=elixir
 ```
 
-The local CLI workspace is configured as `/home/toyos/exercism`, so downloads go to `/home/toyos/exercism/elixir/<slug>`. Add the exercise to the VS Code workspace in alphabetical order, configure Credo and Dialyxir with the shared PLT paths, and run `mix deps.get` and `mix credo` as described in [`AGENTS.md`](AGENTS.md).
+The local CLI workspace is configured as `/home/toyos/exercism`, so downloads go to `/home/toyos/exercism/elixir/<slug>`. Add the exercise to the VS Code workspace in alphabetical order, configure Credo and Dialyxir with the shared PLT paths, run `mix deps.get` and `mix credo`, and remove the `@tag :pending` lines from the tests, as described in [`AGENTS.md`](AGENTS.md).
 
 Add a description to `scripts/descriptions.json` and regenerate the index using the commands below.
 

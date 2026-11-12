@@ -11,7 +11,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Real part" do
-    # @tag :pending
     test "Real part of a purely real number" do
       z = {1, 0}
       output = ComplexNumbers.real(z)
@@ -20,7 +19,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Real part of a purely imaginary number" do
       z = {0, 1}
       output = ComplexNumbers.real(z)
@@ -29,7 +27,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Real part of a number with real and imaginary part" do
       z = {1, 2}
       output = ComplexNumbers.real(z)
@@ -40,7 +37,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Imaginary part" do
-    @tag :pending
     test "Imaginary part of a purely real number" do
       z = {1, 0}
       output = ComplexNumbers.imaginary(z)
@@ -49,7 +45,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Imaginary part of a purely imaginary number" do
       z = {0, 1}
       output = ComplexNumbers.imaginary(z)
@@ -58,7 +53,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Imaginary part of a number with real and imaginary part" do
       z = {1, 2}
       output = ComplexNumbers.imaginary(z)
@@ -68,7 +62,6 @@ defmodule ComplexNumbersTest do
     end
   end
 
-  @tag :pending
   test "Imaginary unit" do
     z1 = {0, 1}
     z2 = {0, 1}
@@ -79,7 +72,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Addition" do
-    @tag :pending
     test "Add purely real numbers" do
       z1 = {1, 0}
       z2 = {2, 0}
@@ -89,7 +81,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Add purely imaginary numbers" do
       z1 = {0, 1}
       z2 = {0, 2}
@@ -99,7 +90,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Add numbers with real and imaginary part" do
       z1 = {1, 2}
       z2 = {3, 4}
@@ -111,7 +101,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Subtraction" do
-    @tag :pending
     test "Subtract purely real numbers" do
       z1 = {1, 0}
       z2 = {2, 0}
@@ -121,7 +110,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Subtract purely imaginary numbers" do
       z1 = {0, 1}
       z2 = {0, 2}
@@ -131,7 +119,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Subtract numbers with real and imaginary part" do
       z1 = {1, 2}
       z2 = {3, 4}
@@ -143,7 +130,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Multiplication" do
-    @tag :pending
     test "Multiply purely real numbers" do
       z1 = {1, 0}
       z2 = {2, 0}
@@ -153,7 +139,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Multiply purely imaginary numbers" do
       z1 = {0, 1}
       z2 = {0, 2}
@@ -163,7 +148,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Multiply numbers with real and imaginary part" do
       z1 = {1, 2}
       z2 = {3, 4}
@@ -175,7 +159,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Division" do
-    @tag :pending
     test "Divide purely real numbers" do
       z1 = {1, 0}
       z2 = {2, 0}
@@ -185,7 +168,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Divide purely imaginary numbers" do
       z1 = {0, 1}
       z2 = {0, 2}
@@ -195,7 +177,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Divide numbers with real and imaginary part" do
       z1 = {1, 2}
       z2 = {3, 4}
@@ -207,7 +188,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Absolute value" do
-    @tag :pending
     test "Absolute value of a positive purely real number" do
       z = {5, 0}
       output = ComplexNumbers.abs(z)
@@ -216,7 +196,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Absolute value of a negative purely real number" do
       z = {-5, 0}
       output = ComplexNumbers.abs(z)
@@ -225,7 +204,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Absolute value of a purely imaginary number with positive imaginary part" do
       z = {0, 5}
       output = ComplexNumbers.abs(z)
@@ -234,7 +212,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Absolute value of a purely imaginary number with negative imaginary part" do
       z = {0, -5}
       output = ComplexNumbers.abs(z)
@@ -243,7 +220,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Absolute value of a number with real and imaginary part" do
       z = {3, 4}
       output = ComplexNumbers.abs(z)
@@ -254,7 +230,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Complex conjugate" do
-    @tag :pending
     test "Conjugate a purely real number" do
       z = {5, 0}
       output = ComplexNumbers.conjugate(z)
@@ -263,7 +238,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Conjugate a purely imaginary number" do
       z = {0, 5}
       output = ComplexNumbers.conjugate(z)
@@ -272,7 +246,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Conjugate a number with real and imaginary part" do
       z = {1, 1}
       output = ComplexNumbers.conjugate(z)
@@ -283,7 +256,6 @@ defmodule ComplexNumbersTest do
   end
 
   describe "Complex exponential function" do
-    @tag :pending
     test "Euler's identity/formula" do
       z = {0, :math.pi()}
       output = ComplexNumbers.exp(z)
@@ -292,7 +264,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Exponential of 0" do
       z = {0, 0}
       output = ComplexNumbers.exp(z)
@@ -301,7 +272,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Exponential of a purely real number" do
       z = {1, 0}
       output = ComplexNumbers.exp(z)
@@ -310,7 +280,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Exponential of a number with real and imaginary part" do
       z = {:math.log(2), :math.pi()}
       output = ComplexNumbers.exp(z)
@@ -319,7 +288,6 @@ defmodule ComplexNumbersTest do
       equal(output, expected)
     end
 
-    @tag :pending
     test "Exponential resulting in a number with real and imaginary part" do
       z = {:math.log(2) / 2, :math.pi() / 4}
       output = ComplexNumbers.exp(z)

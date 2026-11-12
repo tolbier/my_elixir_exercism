@@ -5,7 +5,6 @@ defmodule ConnectTest do
     Enum.map(rows, &String.replace(&1, " ", ""))
   end
 
-  # @tag :pending
   test "an empty board has no winner" do
     board =
       remove_spaces([
@@ -19,19 +18,16 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :none
   end
 
-  @tag :pending
   test "X can win on a 1x1 board" do
     board = ["X"]
     assert Connect.result_for(board) == :X
   end
 
-  @tag :pending
   test "O can win on a 1x1 board" do
     board = ["O"]
     assert Connect.result_for(board) == :O
   end
 
-  @tag :pending
   test "only edges does not make a winner" do
     board =
       remove_spaces([
@@ -44,7 +40,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :none
   end
 
-  @tag :pending
   test "illegal diagonal does not make a winner" do
     board =
       remove_spaces([
@@ -58,7 +53,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :none
   end
 
-  @tag :pending
   test "nobody wins crossing adjacent angles" do
     board =
       remove_spaces([
@@ -72,7 +66,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :none
   end
 
-  @tag :pending
   test "X wins crossing from left to right" do
     board =
       remove_spaces([
@@ -86,7 +79,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :X
   end
 
-  @tag :pending
   test "X wins with left-hand dead end fork" do
     board =
       remove_spaces([
@@ -99,7 +91,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :X
   end
 
-  @tag :pending
   test "X wins with right-hand dead end fork" do
     board =
       remove_spaces([
@@ -112,7 +103,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :X
   end
 
-  @tag :pending
   test "O wins crossing from top to bottom" do
     board =
       remove_spaces([
@@ -126,7 +116,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :O
   end
 
-  @tag :pending
   test "X wins using a convoluted path" do
     board =
       remove_spaces([
@@ -152,7 +141,6 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :O
   end
 
-  @tag :pending
   test "X wins using a spiral path" do
     board =
       remove_spaces([
