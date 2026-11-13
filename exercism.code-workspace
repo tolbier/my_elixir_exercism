@@ -74,6 +74,9 @@
 			"path": "rail-fence-cipher"
 		},
 		{
+			"path": "rectangles"
+		},
+		{
 			"path": "relative-distance"
 		},
 		{
