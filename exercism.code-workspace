@@ -110,6 +110,9 @@
 			"path": "transpose"
 		},
 		{
+			"path": "two-bucket"
+		},
+		{
 			"path": "variable-length-quantity"
 		},
 		{
