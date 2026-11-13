@@ -8,8 +8,9 @@
    exercism download --exercise=<slug> --track=elixir
    ```
 
-   El CLI ya está configurado con `workspace: /home/toyos/exercism`, así que se descarga
-   directamente en `/home/toyos/exercism/elixir/<slug>` — no hace falta mover nada.
+   El CLI ya está configurado con `workspace: /home/toyos/Projects/Elixir/exercism`, así
+   que se descarga directamente en `/home/toyos/Projects/Elixir/exercism/elixir/<slug>`
+   — no hace falta mover nada.
 
    **Cada ejercicio descargado debe quedar preparado con Credo y Dialyzer en ese
    momento**. Completar los pasos 3 y 4, incluido `mix deps.get`, antes de dar por
@@ -90,6 +91,15 @@ algorítmica razonada. Aplicar estas preferencias al implementar o refactorizar:
 - Usar pipelines para expresar transformaciones sucesivas de forma fácil de leer.
   Preferir pattern matching y cláusulas de función para casos simples; evitar
   anidamiento excesivo de `if` o `case`.
+- Si una función (o una cláusula) tiene una sola expresión, usar la forma corta
+  `do:` en lugar de `do ... end`, p. ej.
+  `defp position({row, col}), do: %{row: row + 1, column: col + 1}`. Vale
+  aunque `mix format` deje la cabecera en una línea y `do: <expresión>` en la
+  siguiente, siempre que la expresión quepa en una sola línea. Si `mix format`
+  tuviera que partir la propia expresión en varias líneas (pipelines largos,
+  comprensiones `for`, structs que no caben), mantener `do ... end`. Los
+  pipelines con más de dos `|>` también mantienen `do ... end`, con un paso por
+  línea, aunque quepan en una sola.
 - Extraer helpers cuando aclaren una responsabilidad. Fusionar funciones que solo
   añadan un nivel de indirección sin aportar significado; evitar abstracciones
   innecesarias y no perseguir la máxima concisión.
