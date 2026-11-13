@@ -89,6 +89,9 @@
 			"path": "satellite"
 		},
 		{
+			"path": "sgf-parsing"
+		},
+		{
 			"path": "sieve"
 		},
 		{
