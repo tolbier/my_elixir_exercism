@@ -116,6 +116,9 @@
 			"path": "variable-length-quantity"
 		},
 		{
+			"path": "word-search"
+		},
+		{
 			"path": "yacht"
 		},
 		{
