@@ -23,6 +23,9 @@
 			"path": "change"
 		},
 		{
+			"path": "circular-buffer"
+		},
+		{
 			"path": "connect"
 		},
 		{
