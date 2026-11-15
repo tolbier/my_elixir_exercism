@@ -33,7 +33,7 @@ mix credo
 mix dialyzer
 ```
 
-For a final check, first add any missing `@spec` annotations, then run `mix test --include pending`, `mix credo`, and `mix dialyzer`. Older exercises may still need the tooling configured; see [`AGENTS.md`](AGENTS.md). New exercises use `~/.cache/dialyxir_plts` for both `plt_core_path` and `plt_local_path` to share PLT files across projects.
+For a final check, first add any missing `@spec` annotations, then run `mix test --include pending`, `mix format --check-formatted`, `mix credo`, and `mix dialyzer`. Older exercises may still need the tooling configured; see [`AGENTS.md`](AGENTS.md). New exercises use `~/.cache/dialyxir_plts` for both `plt_core_path` and `plt_local_path` to share PLT files across projects.
 
 ## Adding an exercise
 
