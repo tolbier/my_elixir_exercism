@@ -89,6 +89,9 @@
 			"path": "rail-fence-cipher"
 		},
 		{
+			"path": "react"
+		},
+		{
 			"path": "rectangles"
 		},
 		{
