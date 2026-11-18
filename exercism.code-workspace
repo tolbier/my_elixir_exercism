@@ -47,6 +47,9 @@
 			"path": "game-of-life"
 		},
 		{
+			"path": "go-counting"
+		},
+		{
 			"path": "intergalactic-transmission"
 		},
 		{
