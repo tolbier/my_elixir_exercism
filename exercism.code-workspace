@@ -144,6 +144,9 @@
 		},
 		{
 			"path": "zebra-puzzle"
+		},
+		{
+			"path": "zipper"
 		}
 	],
 	"settings": {
